@@ -1,0 +1,15 @@
+name: 06 Events Activity Types
+
+on:
+  pull_request: 
+    types: [opened, synchronize, edited]
+    branches: 
+      - main
+      - 'releases/**'
+
+jobs:
+  activities:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Filter Activity Types
+        run: echo "Workflow triggered by ${{github.event_name}} event"
