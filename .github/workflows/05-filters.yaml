@@ -1,0 +1,16 @@
+name: 05 - Trigger Filters
+
+on:
+  workflow_dispatch: 
+  push:
+    branches-ignore: 
+      - main
+    paths-ignore: 
+      - '**.md'
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Filters
+        run: echo "Workflow triggered by ${{github.event_name}} event"
