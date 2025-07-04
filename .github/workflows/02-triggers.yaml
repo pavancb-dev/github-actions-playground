@@ -1,4 +1,4 @@
-name: 02 - Workflows Events
+name: 02 - Triggers
 
 on:
   workflow_dispatch: 
@@ -15,7 +15,7 @@ on:
     
 
 jobs:
-  event:
+  trigger:
     runs-on: ubuntu-latest
     steps:
       - name: Triggering Event
