@@ -14,6 +14,6 @@ jobs:
       - name: goodbye-1
         run: | 
           echo "It was nice meeting you!"
-          exit 1
+          echo "See you soon"
       - name: goodbye-2
         run: echo "GoodBye!"
