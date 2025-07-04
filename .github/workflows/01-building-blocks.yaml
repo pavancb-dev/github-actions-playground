@@ -1,0 +1,19 @@
+name: 01-building-blocks
+
+on: workflow_dispatch
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: greet
+        run: echo "Hi there!"
+  goodbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: goodbye-1
+        run: | 
+          echo "It was nice meeting you!"
+          exit 1
+      - name: goodbye-2
+        run: echo "GoodBye!"
