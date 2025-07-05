@@ -1,0 +1,25 @@
+name: 09 - Variables
+
+on: workflow_dispatch
+
+jobs: 
+  repo-vars:
+    name: Demo on repository variables
+    runs-on: ubuntu-latest
+    steps:
+      - name: repo-vars
+        run: echo "repo profile is ${{vars.PROFILE}}"
+  prod-vars:
+    name: Demo on prod environment variables
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: prod-vars
+        run: echo "prod profile is ${{vars.PROFILE}}"
+  stage-vars:
+    name: Demo on stage environment variables
+    runs-on: ubuntu-latest
+    environment: stage
+    steps:
+      - name: stage-vars
+        run: echo "stage profile is ${{vars.PROFILE}}"
