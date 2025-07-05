@@ -1,0 +1,35 @@
+name: 12 Inputs
+
+on: 
+  workflow_dispatch:
+    inputs:
+      tech:
+        type: string
+        default: java
+        description: Enter language
+        required: true
+      profile:
+        type: environment
+        required: true
+        description: Select Environment
+      version:
+        type: choice
+        options:
+          - v1
+          - v2
+          - v3
+        description: Select version
+        default: v1
+
+jobs:
+  inputs:
+    name: Inputs
+    runs-on: ubuntu-latest
+    steps:
+      - name: String input
+        run: echo "${{ inputs.tech }}"
+      - name: Environment input
+        run: |
+          echo "${{ inputs.profile }} - ${{ vars.PROFILE }}"
+      - name: Choice input
+        run: echo "${{ inputs.version }}"
