@@ -1,0 +1,24 @@
+name: 10 - Functions
+
+on: workflow_dispatch
+
+jobs:
+  function:
+    name: Function
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Branch
+        if: contains(fromJson('["main", "master"]'), github.ref_name)
+        run: echo "Branch passed"
+      - name: If Success
+        if: success()
+        run: echo "success"
+      - name: If Failure
+        if: failure()
+        run: echo "failure"
+      - name: if Cancelled
+        if: cancelled()
+        run: echo "cancelled"
+      - name: Not Cancelled
+        if: !cancelled()
+        run: echo "not cancelled"
