@@ -25,6 +25,7 @@ jobs:
   inputs:
     name: Inputs
     runs-on: ubuntu-latest
+    environment: ${{ inputs.profile }}
     steps:
       - name: String input
         run: echo "${{ inputs.tech }}"
