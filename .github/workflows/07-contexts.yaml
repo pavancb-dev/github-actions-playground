@@ -1,0 +1,36 @@
+name: 07 - Contexts
+
+on: workflow_dispatch
+
+env:
+  MY_ENV: 'workflow'
+
+jobs:
+  context:
+    runs-on: ubuntu-latest
+    env:
+      MY_ENV: 'job'
+    steps:
+      - name: github-context
+        run: |
+          echo "event name: ${{github.event_name}}"
+          echo "ref: ${{github.ref}}"
+          echo "sha: ${{github.sha}}"
+          echo "actor: ${{github.actor}}"
+          echo "workflow: ${{github.workflow}}"
+          echo "run id: ${{github.run_id}}"
+          echo "run number: ${{github.run_number}}"
+      - name: variable-context
+        run: echo "MY_VAR variable value ${{vars.MY_VAR}}"
+      - name: step env
+        env:
+          MY_ENV: 'step'
+        run: echo "MY_ENV environment value ${{env.MY_ENV}}"
+      - name: job env
+        run: echo "MY_ENV environment value ${{env.MY_ENV}}"
+  workflow-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: workflow env
+        run: echo "MY_ENV environment value ${{env.MY_ENV}}"
+  
