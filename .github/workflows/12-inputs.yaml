@@ -1,4 +1,4 @@
-name: 12 Inputs
+name: 12 - Inputs
 
 on: 
   workflow_dispatch:
