@@ -7,12 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: simple-spring-boot-app
+        working-directory: java-app
     steps:
       - name: checkout code
         uses: actions/checkout@v4
         with:
-          sparse-checkout: simple-spring-boot-app
+          sparse-checkout: java-app
       - name: setup java
         uses: actions/setup-java@v4
         with:
