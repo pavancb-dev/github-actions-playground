@@ -9,8 +9,8 @@ jobs:
     strategy:
       matrix:
         os: 
-          - ubuntu_latest
-          - windows_latest
+          - ubuntu-latest
+          - windows-latest
         ver: [17, 21]
         include:
           - ver: 11
