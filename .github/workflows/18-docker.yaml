@@ -1,4 +1,4 @@
-name: 18 - Custom Actions - Docker
+name: 18 - Docker
 
 on:
   workflow_dispatch:
