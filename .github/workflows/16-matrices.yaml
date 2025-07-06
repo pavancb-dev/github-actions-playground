@@ -1,0 +1,27 @@
+name: 16 - Matrices
+
+on: workflow_dispatch
+
+jobs:
+  matrix:
+    name: ${{ matrix.os }} - ${{ matrix.ver }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: 
+          - ubuntu_latest
+          - windows_latest
+        ver: [17, 21]
+        include:
+          - ver: 11
+        exclude:
+          - os: windows_latest
+            ver: 11
+    steps:
+      - name: Setup Java - ${{ matrix.ver }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: ${{ matrix.ver }}
+      - name: ${{ runner.os }} - ${{ matrix.ver }}
+        run: java --version
