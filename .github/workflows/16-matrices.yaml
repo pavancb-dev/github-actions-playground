@@ -15,7 +15,7 @@ jobs:
         include:
           - ver: 11
         exclude:
-          - os: windows_latest
+          - os: windows-latest
             ver: 11
     steps:
       - name: Setup Java - ${{ matrix.ver }}
