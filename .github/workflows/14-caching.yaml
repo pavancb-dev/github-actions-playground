@@ -1,0 +1,33 @@
+name: 14 - Caching
+
+on: workflow_dispatch
+
+jobs:
+  ract-app:
+    runs-on: ubuntu-latest
+    name: React App CI
+    defaults:
+      run:
+        working-directory: react-app
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: react-app
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - id: cache
+        name: Cache Dependency
+        uses: actions/cache@v4
+        with:
+          key: ${{ hashFiles('react-app/package-lock.json') }}
+          path: react-app/node_modules
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Lint code
+        run: npm lint
+      - name: Build code
+        run: npm build
