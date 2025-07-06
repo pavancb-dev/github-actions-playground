@@ -1,6 +1,8 @@
 name: 04 - Actions
 
-on: workflow_dispatch
+on: 
+  - workflow_dispatch
+  - workflow_call
 
 jobs:
   java-ci:
@@ -11,8 +13,6 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
-        with:
-          sparse-checkout: java-app
       - name: setup java
         uses: actions/setup-java@v4
         with:

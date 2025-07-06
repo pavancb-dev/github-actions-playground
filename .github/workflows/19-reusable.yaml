@@ -1,0 +1,7 @@
+name: 19 - Resuable
+
+on: workflow_dispatch
+
+jobs:
+  java-ci:
+    uses: ./.github/workflows/04-actions.yaml
