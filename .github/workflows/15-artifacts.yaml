@@ -1,0 +1,52 @@
+name: 15 - Artifacts
+run-name: Artifacts
+
+on: workflow_dispatch
+
+jobs:
+  ci:
+    name: React App CI
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: react-app
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: react-app
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Setup Cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          key: ${{ hashFiles('react-app/package-lock.json') }}
+          path: react-app/node_modules
+      - name: Install Dependency
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Lint Code
+        run: npm run lint
+      - name: Build Code
+        run: npm run build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-app
+          path: react-app/dist/
+  cd:
+    name: React App CD
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: react-app
+          path: dist
+      - name: Directory Structure
+        run: ls -l
+      - name: Deploy Artifact
+        run: echo "Deploying React App"
