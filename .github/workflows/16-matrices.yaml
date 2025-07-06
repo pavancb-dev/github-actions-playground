@@ -3,8 +3,8 @@ name: 16 - Matrices
 on: workflow_dispatch
 
 jobs:
-  matrix:
-    name: ${{ matrix.os }} - ${{ matrix.ver }}
+  matrices:
+    name: ${{ matrix.os }}-${{ matrix.ver }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
